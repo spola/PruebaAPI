@@ -21,7 +21,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
                     database: configService.get('DATABASE_NAME'),
                     entities: ['dist/**/*.entity.js'],
                     synchronize: false,
-                    options: { trustServerCertificate: true }
+                    options: { trustServerCertificate: true },
+                    logging: true
                 };
 
             }
