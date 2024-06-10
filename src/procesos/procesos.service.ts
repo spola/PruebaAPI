@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProcesoDto } from './dto/create-proceso.dto';
 import { UpdateProcesoDto } from './dto/update-proceso.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -12,16 +12,33 @@ export class ProcesosService {
     private procesoRepository: Repository<Proceso>,
   ) { }
 
-  create(createProcesoDto: CreateProcesoDto) {
-    return 'This action adds a new proceso';
+  async create(createProcesoDto: CreateProcesoDto): Promise<Proceso> {
+
+    // const { title, content, rating } = createNoteDto;
+    // const note = this.notesRepository.create({
+    //   title,
+    //   content,
+    //   rating
+    // });
+    // await this.notesRepository.save(note);
+    // return note;
+
+    const proceso = this.procesoRepository.create(createProcesoDto);
+    await this.procesoRepository.save(proceso);
+
+    return proceso;
   }
 
   async findAll(): Promise<Proceso[]> {
     return this.procesoRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} proceso`;
+  async findOne(id: number): Promise<Proceso> {
+    const found = await this.procesoRepository.findOne({ where: { id: id } });
+    if (!found) {
+      throw new NotFoundException(`Proceso "${id}" not found`);
+    }
+    return found;
   }
 
   update(id: number, updateProcesoDto: UpdateProcesoDto) {
