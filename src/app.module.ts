@@ -6,6 +6,8 @@ import { ProcesosModule } from './procesos/procesos.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { PruebasModule } from './pruebas/pruebas.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -14,7 +16,9 @@ import { PruebasModule } from './pruebas/pruebas.module';
     HealthModule,
     //ProcesosModule,
     DatabaseModule,
-    PruebasModule
+    PruebasModule,
+    AuthModule,
+    UsersModule
   ],
   controllers: [AppController],
   providers: [AppService],
