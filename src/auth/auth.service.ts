@@ -22,19 +22,10 @@ export class AuthService {
 
         const payload = { sub: user.userId, username: user.username };
 
-console.info(jwtConstants.secret);
         let access_token = await this.jwtService.signAsync(payload, {
             secret: jwtConstants.secret
         });
-console.info(access_token);
-let verified = this.jwtService.verify(access_token, {
-    secret: jwtConstants.secret
-});
-console.info(verified);
-let v = await this.jwtService.verifyAsync(access_token, {
-    secret: jwtConstants.secret
-});
-console.info(v);
+
         return {
             access_token: access_token,
         };
