@@ -52,7 +52,7 @@ describe('AuthController', () => {
     await expect(resp).resolves.toHaveProperty('access_token', "el_token");
   });
 
-  it('should throw UnauthorizedException', async () => {
+  it('should throw UnauthorizedException wrong password', async () => {
     let dto = {
       username: 'john',
       password: 'changeme',
@@ -62,6 +62,18 @@ describe('AuthController', () => {
       username: 'john',
       password: 'otra_password'
     });
+
+    let resp = controller.signIn(dto);
+    await expect(resp).rejects.toThrow(UnauthorizedException);
+  });
+
+  it('should throw UnauthorizedException user not found', async () => {
+    let dto = {
+      username: 'john',
+      password: 'changeme',
+    };
+
+    jest.spyOn(userService, "findOne").mockResolvedValueOnce(null);
 
     let resp = controller.signIn(dto);
     await expect(resp).rejects.toThrow(UnauthorizedException);
