@@ -3,7 +3,7 @@ import { PruebasService } from './pruebas.service';
 import { CreatePruebaDto } from './dto/create-prueba.dto';
 import { UpdatePruebaDto } from './dto/update-prueba.dto';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateDetalleDto } from 'src/procesos/dto/create-detalle.dto';
+import { CreateDetalleDto } from './dto/create-detalle.dto';
 import { DetalleEntity } from './entities/detalle.entity';
 
 @ApiTags("pruebas")

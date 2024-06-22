@@ -5,7 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { PruebaEntity } from './entities/prueba.entity';
 import { IsNull, Not, Repository } from 'typeorm';
 import { DetalleEntity } from './entities/detalle.entity';
-import { CreateDetalleDto } from 'src/procesos/dto/create-detalle.dto';
+import { CreateDetalleDto } from './dto/create-detalle.dto';
 
 @Injectable()
 export class PruebasService {
