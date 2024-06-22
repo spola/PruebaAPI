@@ -78,4 +78,9 @@ describe('AuthController', () => {
     let resp = controller.signIn(dto);
     await expect(resp).rejects.toThrow(UnauthorizedException);
   });
+
+  it("shoul return the user loggein from the request", async () => {
+    let req = { user: { username: 'john' } };
+    expect(controller.getProfile(req)).toBe(req.user);
+  });
 });
