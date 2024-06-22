@@ -27,6 +27,7 @@ export class PruebasService {
 
   async findAll(): Promise<PruebaEntity[]> {
     return await this._pruebaRepository.find({
+      relations:["detalles"],
       where: {
         deletedAt: IsNull()
       }
