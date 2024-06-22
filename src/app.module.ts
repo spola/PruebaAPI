@@ -12,9 +12,8 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     ConfigModule.forRoot({}),
-    DatabaseModule,
     HealthModule,
-    //ProcesosModule,
+    ProcesosModule,
     DatabaseModule,
     PruebasModule,
     AuthModule,
