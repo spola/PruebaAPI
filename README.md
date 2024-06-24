@@ -71,3 +71,13 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+
+##
+nest g module CowSay
+
+
+## Links
+Construir una app de consola
+https://hackernoon.com/creating-a-cli-app-with-nestjs-a-quick-and-easy-step-by-step-guide
